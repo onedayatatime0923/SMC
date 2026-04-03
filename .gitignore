@@ -1,0 +1,13 @@
+tags*
+.*
+__pycache__
+*/.*
+*/__pycache__
+*/*/.*
+*/*/__pycache__
+bin/*
+build/*
+lib/libsrclib.a
+tool/libtorch
+!.gitignore
+!.gitattributes
