@@ -26,8 +26,285 @@ NNV_NAMESPACING_START
 //     return 0;
 // };
 
+int CVerifier::Verify(const string & model_path) {
+    solver_.ResetSat();
+    counter_example_ = torch::empty({0});
+    iteration_ = 0;
+
+    z3::context property_context;
+    z3::expr_vector parsed_property_v = property_context.parse_file(model_path.c_str());
+
+    map<string, CSolver::SatVar*> bool_var_m;
+    map<string, GRBVar> real_var_m;
+    int aux_var_id = 0;
+
+    auto EnsureBoolVar = [this, &bool_var_m](const string& name) {
+        auto it = bool_var_m.find(name);
+        if (it != bool_var_m.end()) {
+            return it->second;
+        }
+        CSolver::SatVar* var = solver_.AddSatVar(name);
+        bool_var_m.emplace(name, var);
+        return var;
+    };
+
+    auto EnsureRealVar = [this, &real_var_m](const string& name) -> GRBVar& {
+        auto it = real_var_m.find(name);
+        if (it != real_var_m.end()) {
+            return it->second;
+        }
+        GRBVar var = solver_.ConvexSolver().addVar(-GRB_INFINITY, GRB_INFINITY, 0, GRB_CONTINUOUS, name);
+        auto res = real_var_m.emplace(name, var);
+        return res.first->second;
+    };
+
+    function<bool(const z3::expr&)> IsBoolAtom = [](const z3::expr& expr) {
+        return expr.is_bool() and expr.num_args() == 0 and expr.decl().decl_kind() == Z3_OP_UNINTERPRETED;
+    };
+
+    function<bool(const z3::expr&)> ContainsArithVar = [&ContainsArithVar](const z3::expr& expr) {
+        if (expr.is_arith() and expr.num_args() == 0 and expr.decl().decl_kind() == Z3_OP_UNINTERPRETED) {
+            return true;
+        }
+        for (int i = 0; i < expr.num_args(); ++i) {
+            if (ContainsArithVar(expr.arg(i))) {
+                return true;
+            }
+        }
+        return false;
+    };
+
+    function<bool(const z3::expr&)> IsLinearComparison = [&ContainsArithVar](const z3::expr& expr) {
+        Z3_decl_kind kind = expr.decl().decl_kind();
+        return (kind == Z3_OP_LE or kind == Z3_OP_LT or kind == Z3_OP_GE or kind == Z3_OP_GT or kind == Z3_OP_EQ) and expr.num_args() == 2 and (ContainsArithVar(expr.arg(0)) or ContainsArithVar(expr.arg(1)));
+    };
+
+    function<bool(const z3::expr&)> IsLinearConstraintFormula = [&IsLinearComparison, &IsLinearConstraintFormula](const z3::expr& expr) {
+        if (IsLinearComparison(expr)) {
+            return true;
+        }
+        if (expr.is_bool() and expr.decl().decl_kind() == Z3_OP_AND) {
+            for (int i = 0; i < expr.num_args(); ++i) {
+                if (!IsLinearConstraintFormula(expr.arg(i))) {
+                    return false;
+                }
+            }
+            return expr.num_args() > 0;
+        }
+        return false;
+    };
+
+    function<double(const z3::expr&)> ToDouble = [&ToDouble](const z3::expr& expr) -> double {
+        Z3_decl_kind kind = expr.decl().decl_kind();
+        if (kind == Z3_OP_ANUM) {
+            return expr.as_double();
+        }
+        else if (kind == Z3_OP_UMINUS) {
+            assert(expr.num_args() == 1);
+            return -ToDouble(expr.arg(0));
+        }
+        else if (kind == Z3_OP_ADD) {
+            double value = 0;
+            for (int i = 0; i < expr.num_args(); ++i) {
+                value += ToDouble(expr.arg(i));
+            }
+            return value;
+        }
+        else if (kind == Z3_OP_SUB) {
+            assert(expr.num_args() >= 1);
+            double value = ToDouble(expr.arg(0));
+            for (int i = 1; i < expr.num_args(); ++i) {
+                value -= ToDouble(expr.arg(i));
+            }
+            return value;
+        }
+        else if (kind == Z3_OP_MUL) {
+            double value = 1;
+            for (int i = 0; i < expr.num_args(); ++i) {
+                value *= ToDouble(expr.arg(i));
+            }
+            return value;
+        }
+        else if (kind == Z3_OP_DIV) {
+            assert(expr.num_args() == 2);
+            return ToDouble(expr.arg(0)) / ToDouble(expr.arg(1));
+        }
+        assert(false);
+    };
+
+    function<GRBLinExpr(const z3::expr&)> ToLinearExpr = [&ToLinearExpr, &ToDouble, &EnsureRealVar, &ContainsArithVar](const z3::expr& expr) -> GRBLinExpr {
+        Z3_decl_kind kind = expr.decl().decl_kind();
+        if (expr.is_arith() and expr.num_args() == 0 and kind == Z3_OP_UNINTERPRETED) {
+            return EnsureRealVar(expr.decl().name().str());
+        }
+        else if (kind == Z3_OP_ANUM) {
+            return GRBLinExpr(expr.as_double());
+        }
+        else if (kind == Z3_OP_UMINUS) {
+            assert(expr.num_args() == 1);
+            return -ToLinearExpr(expr.arg(0));
+        }
+        else if (kind == Z3_OP_ADD) {
+            GRBLinExpr res;
+            for (int i = 0; i < expr.num_args(); ++i) {
+                res += ToLinearExpr(expr.arg(i));
+            }
+            return res;
+        }
+        else if (kind == Z3_OP_SUB) {
+            assert(expr.num_args() >= 1);
+            GRBLinExpr res = ToLinearExpr(expr.arg(0));
+            for (int i = 1; i < expr.num_args(); ++i) {
+                res -= ToLinearExpr(expr.arg(i));
+            }
+            return res;
+        }
+        else if (kind == Z3_OP_MUL) {
+            double coeff = 1;
+            bool linear_term_set_b = false;
+            GRBLinExpr linear_term;
+            for (int i = 0; i < expr.num_args(); ++i) {
+                if (ContainsArithVar(expr.arg(i))) {
+                    assert(!linear_term_set_b);
+                    linear_term = ToLinearExpr(expr.arg(i));
+                    linear_term_set_b = true;
+                }
+                else {
+                    coeff *= ToDouble(expr.arg(i));
+                }
+            }
+            if (!linear_term_set_b) {
+                return GRBLinExpr(coeff);
+            }
+            return coeff * linear_term;
+        }
+        else if (kind == Z3_OP_DIV) {
+            assert(expr.num_args() == 2);
+            return (1.0 / ToDouble(expr.arg(1))) * ToLinearExpr(expr.arg(0));
+        }
+        assert(false);
+    };
+
+    function<GRBTempConstr(const z3::expr&)> ToTempConstr = [this, &ToLinearExpr](const z3::expr& expr) -> GRBTempConstr {
+        assert(expr.num_args() == 2);
+        GRBLinExpr lhs = ToLinearExpr(expr.arg(0));
+        GRBLinExpr rhs = ToLinearExpr(expr.arg(1));
+        Z3_decl_kind kind = expr.decl().decl_kind();
+        if (kind == Z3_OP_LE) {
+            return lhs - rhs <= 0;
+        }
+        else if (kind == Z3_OP_LT) {
+            return lhs - rhs + solver_.parameter_.kEPS <= 0;
+        }
+        else if (kind == Z3_OP_GE) {
+            return lhs - rhs >= 0;
+        }
+        else if (kind == Z3_OP_GT) {
+            return lhs - rhs - solver_.parameter_.kEPS >= 0;
+        }
+        else if (kind == Z3_OP_EQ) {
+            return lhs - rhs == 0;
+        }
+        assert(false);
+    };
+
+    function<z3::expr(const z3::expr&)> ToSatExpr = [this, &ToSatExpr, &EnsureBoolVar, &IsBoolAtom](const z3::expr& expr) -> z3::expr {
+        if (expr.is_true() or expr.is_false()) {
+            return solver_.SatContex().bool_val(expr.is_true());
+        }
+
+        Z3_decl_kind kind = expr.decl().decl_kind();
+        if (IsBoolAtom(expr)) {
+            return CSolver::SatExpr(EnsureBoolVar(expr.decl().name().str()));
+        }
+        else if (kind == Z3_OP_NOT) {
+            assert(expr.num_args() == 1);
+            return !ToSatExpr(expr.arg(0));
+        }
+        else if (kind == Z3_OP_OR) {
+            assert(expr.num_args() >= 1);
+            z3::expr res = ToSatExpr(expr.arg(0));
+            for (int i = 1; i < expr.num_args(); ++i) {
+                res = res || ToSatExpr(expr.arg(i));
+            }
+            return res;
+        }
+        else if (kind == Z3_OP_AND) {
+            assert(expr.num_args() >= 1);
+            z3::expr res = ToSatExpr(expr.arg(0));
+            for (int i = 1; i < expr.num_args(); ++i) {
+                res = res && ToSatExpr(expr.arg(i));
+            }
+            return res;
+        }
+        else if (kind == Z3_OP_IMPLIES) {
+            assert(expr.num_args() == 2);
+            return z3::implies(ToSatExpr(expr.arg(0)), ToSatExpr(expr.arg(1)));
+        }
+        else if (kind == Z3_OP_EQ) {
+            assert(expr.num_args() == 2);
+            return ToSatExpr(expr.arg(0)) == ToSatExpr(expr.arg(1));
+        }
+        assert(false);
+    };
+
+    auto TranslateExpr = [this, &property_context](const z3::expr& expr) {
+        return z3::expr(solver_.SatContex(), Z3_translate(property_context, expr, solver_.SatContex()));
+    };
+
+    function<void(CSolver::SatVar*, const z3::expr&)> AddLinearConstraintFormula =
+    [&AddLinearConstraintFormula, &ToTempConstr](CSolver::SatVar* sat_var, const z3::expr& expr) {
+        if (expr.decl().decl_kind() == Z3_OP_AND) {
+            for (int i = 0; i < expr.num_args(); ++i) {
+                AddLinearConstraintFormula(sat_var, expr.arg(i));
+            }
+            return;
+        }
+        sat_var->lin_expr_.emplace_back(ToTempConstr(expr));
+    };
+
+    auto AddGuardedConstraint = [this, &EnsureBoolVar, &AddLinearConstraintFormula, &aux_var_id](const z3::expr& guard_expr, const z3::expr& constr_expr) {
+        CSolver::SatVar* gate_var = nullptr;
+        if (guard_expr.num_args() == 0 and guard_expr.decl().decl_kind() == Z3_OP_UNINTERPRETED) {
+            gate_var = EnsureBoolVar(guard_expr.decl().name().str());
+        }
+        else {
+            gate_var = solver_.AddSatVar("aux_guard_" + to_string(aux_var_id++));
+            solver_.AddSatConstraint(CSolver::SatExpr(gate_var) == guard_expr);
+        }
+        AddLinearConstraintFormula(gate_var, constr_expr);
+    };
+
+    for (int i = 0; i < parsed_property_v.size(); ++i) {
+        z3::expr expr = TranslateExpr(parsed_property_v[i]);
+        if (expr.decl().decl_kind() == Z3_OP_IMPLIES and expr.num_args() == 2 and IsLinearConstraintFormula(expr.arg(1))) {
+            AddGuardedConstraint(ToSatExpr(expr.arg(0)), expr.arg(1));
+        }
+        else if (IsLinearConstraintFormula(expr)) {
+            CSolver::SatVar* gate_var = solver_.AddSatVar("aux_true_" + to_string(aux_var_id++));
+            solver_.AddSatFixedConstraint(CSolver::SatExpr(gate_var));
+            AddLinearConstraintFormula(gate_var, expr);
+        }
+        else {
+            solver_.AddSatConstraint(ToSatExpr(expr));
+        }
+    }
+
+    solver_.ConvexSolver().update();
+    solution_checker_f_ = [this]() {
+        counter_example_ = torch::zeros({1}, torch::dtype(torch::kFloat64));
+        return 1;
+    };
+
+    int result = Solve_Smc();
+    if (result == 0) {
+        counter_example_ = torch::empty({0});
+    }
+    WriteOutput();
+    return result;
+};
+
 int CVerifier::Verify_Neural_Network(const string & model_path) {
-    assert(neural_network_v_.size() == 1);
     solver_.ResetSat();
 
     // // Parse Specification

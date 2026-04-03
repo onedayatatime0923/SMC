@@ -36,6 +36,7 @@ public:
 
     // set safety property
 
+    int                     Verify                              (const string & model_path);
     int                     Verify_Neural_Network               (const string & model_path);
     int                     Verify_Neural_Network               (const double& eps);
     int                     Verify_SDT_Monolith                 ();
