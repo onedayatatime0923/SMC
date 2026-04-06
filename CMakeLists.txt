@@ -83,15 +83,15 @@ set(MAINPATH ${SRCPATH}/main/)
 
 # Add an executable with the above sources
 # add_executable(main ${MAINPATH}main.cpp)
-add_executable(verification_property ${MAINPATH}nn_property.cpp)
+# add_executable(verification_property ${MAINPATH}nn_property.cpp)
 add_executable(smc ${MAINPATH}smc.cpp)
 
 # link the new target with the target
 # target_link_libraries(main srclib ${LIB} ${GUROBI_LIBRARIES} readline ${OpenCV_LIBS} ${TORCH_LIBRARIES} ${Z3_LIBRARIES} ${ZLIB_LIBRARIES})
-target_link_libraries(verification_property srclib ${LIB} ${GUROBI_LIBRARIES} readline ${OpenCV_LIBS} ${TORCH_LIBRARIES} ${Z3_LIBRARIES} ${ZLIB_LIBRARIES})
+# target_link_libraries(verification_property srclib ${LIB} ${GUROBI_LIBRARIES} readline ${OpenCV_LIBS} ${TORCH_LIBRARIES} ${Z3_LIBRARIES} ${ZLIB_LIBRARIES})
 target_link_libraries(smc srclib ${LIB} ${GUROBI_LIBRARIES} readline ${OpenCV_LIBS} ${TORCH_LIBRARIES} ${Z3_LIBRARIES} ${ZLIB_LIBRARIES})
 
 # link the new hello_library target with the hello_binary target
 # set_target_properties(main PROPERTIES OUTPUT_NAME bin/NNV)
-set_target_properties(verification_property PROPERTIES OUTPUT_NAME bin/VerificationProperty)
+# set_target_properties(verification_property PROPERTIES OUTPUT_NAME bin/VerificationProperty)
 set_target_properties(smc PROPERTIES OUTPUT_NAME bin/SMC)

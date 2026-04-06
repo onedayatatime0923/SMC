@@ -36,9 +36,6 @@ int main(int argc, char **argv){
 
     vector<CSDT> sdt_v;
 
-    // printf("%s", nn_v[0].Str(true).c_str());
-    // getchar();
-
     CVerifier verifier(solver, nn_v, sdt_v);
     verifier.Verify(program.Get<string>("input"));
 

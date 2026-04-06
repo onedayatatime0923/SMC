@@ -37,19 +37,6 @@ public:
     // set safety property
 
     int                     Verify                              (const string & model_path);
-    int                     Verify_Neural_Network               (const string & model_path);
-    int                     Verify_Neural_Network               (const double& eps);
-    int                     Verify_SDT_Monolith                 ();
-    vector<torch::Tensor>   Verify_SDT_Composition              (int horizon);
-    vector<torch::Tensor>   Verify_SDT_Composition_Car_racing   (int horizon);
-    int                     Verify_NN_Monolith                  ();
-    vector<torch::Tensor>   Verify_NN_Composition               (int horizon);
-    vector<torch::Tensor>   Verify_NN_Composition_Car_racing    (int horizon);
-
-
-    void            CheckApproximationNN                ();
-    void            CheckApproximationMountainCar       ();
-    void            CheckApproximationCartPole          ();
 
     string          Str                     () const;
     torch::Tensor&  CounterExample          () { return counter_example_; }

@@ -1,0 +1,11 @@
+; benchmark generated as a simple test case
+(set-info :status sat)
+(declare-fun b__0 () Bool)
+(declare-fun b__1 () Bool)
+(declare-fun y__0 () Real)
+(assert (or b__0 b__1))
+(assert (=> b__0 (= y__0 1.0)))
+(assert (=> b__1 (= y__0 2.0)))
+(assert (>= y__0 1.0))
+(assert (<= y__0 2.0))
+(check-sat)

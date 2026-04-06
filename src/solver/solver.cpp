@@ -86,6 +86,8 @@ GRBLinExpr CSolver::ComputeConvexExpr(const vector<GRBVar>& var, const torch::Te
 void CSolver::SetConvexConstrant() {
     for (list<SatVar>::iterator it = sat_var_l_.begin(); it != sat_var_l_.end(); ++it) {
         SatVar& var = *it;
+        // cout << SatVarStr(&var) << endl;
+        // cout << var.lin_expr_.size() << endl;
         if (EvalSatVar(&var) == 1) {
             for (int i = 0; i < (int)var.lin_expr_.size(); ++i) {
                 var.lin_constr_.emplace_back(convex_solver_.addConstr(var.lin_expr_[i]));
