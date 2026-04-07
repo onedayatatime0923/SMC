@@ -295,10 +295,10 @@ int CVerifier::Verify(const string & model_path) {
 string CVerifier::Str() const {
     string res;
     if (counter_example_.numel() == 0) {
-        res += "NeuralNetwork is safe within " + to_string(iteration_) + " iteration(s).\n";
+        res += "Input is UNSAT within " + to_string(iteration_) + " iteration(s).\n";
     }
     else {
-        res += "NeuralNetwork is not safe within " + to_string(iteration_) + " iteration(s).\n";
+        res += "Input is SAT within " + to_string(iteration_) + " iteration(s).\n";
     }
     return res;
 };
