@@ -30,20 +30,14 @@ Install Gurobi and configure `GUROBI_HOME` for your shell. For example:
 
 ```bash
 echo 'export GUROBI_HOME=/path/to/gurobi' >> ~/.bashrc
-echo 'export PATH=$GUROBI_HOME/bin:$PATH' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=$GUROBI_HOME/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
 source ~/.bashrc
-echo "$GUROBI_HOME"
 ```
 
 Install Z3 and configure `Z3_HOME` for your shell. For example:
 
 ```bash
 echo 'export Z3_HOME=/path/to/z3' >> ~/.bashrc
-echo 'export PATH=$Z3_HOME/bin:$PATH' >> ~/.bashrc
-echo 'export LD_LIBRARY_PATH=$Z3_HOME/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
 source ~/.bashrc
-echo "$Z3_HOME"
 ```
 
 Install Readline through your system package manager. On Ubuntu or Debian:
