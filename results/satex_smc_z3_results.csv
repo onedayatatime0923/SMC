@@ -1,0 +1,727 @@
+solver,benchmark,group,run,status,result,elapsed_sec,returncode,timed_out,stdout,stderr
+smc,Scalability Boolean1/constraints_1000.smt2,Scalability Boolean1,1,ok,sat,0.21380227699955867,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_1000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                 shows help message and exits
+-v --version                                                                              prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_1000.smt2,Scalability Boolean1,1,ok,sat,0.11062741599926085,0,False,sat,
+smc,Scalability Boolean1/constraints_10000.smt2,Scalability Boolean1,1,ok,sat,0.3219428209995385,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_10000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_10000.smt2,Scalability Boolean1,1,ok,sat,0.12281246000020474,0,False,sat,
+smc,Scalability Boolean1/constraints_100000.smt2,Scalability Boolean1,1,ok,sat,1.934647951999068,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_100000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_100000.smt2,Scalability Boolean1,1,ok,sat,2.1669848919991637,0,False,sat,
+smc,Scalability Boolean1/constraints_105000.smt2,Scalability Boolean1,1,ok,sat,2.1472582690003037,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_105000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_105000.smt2,Scalability Boolean1,1,ok,sat,3.93479047099936,0,False,sat,
+smc,Scalability Boolean1/constraints_110000.smt2,Scalability Boolean1,1,ok,sat,2.299237658000493,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_110000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_110000.smt2,Scalability Boolean1,1,ok,sat,4.938063580999369,0,False,sat,
+smc,Scalability Boolean1/constraints_115000.smt2,Scalability Boolean1,1,ok,sat,2.22876973700113,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_115000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_115000.smt2,Scalability Boolean1,1,ok,sat,11.886889638999492,0,False,sat,
+smc,Scalability Boolean1/constraints_120000.smt2,Scalability Boolean1,1,ok,sat,2.4174151429997437,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_120000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_120000.smt2,Scalability Boolean1,1,ok,sat,10.862255076999645,0,False,sat,
+smc,Scalability Boolean1/constraints_125000.smt2,Scalability Boolean1,1,ok,sat,3.574272314999689,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_125000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_125000.smt2,Scalability Boolean1,1,ok,sat,16.467273804000797,0,False,sat,
+smc,Scalability Boolean1/constraints_130000.smt2,Scalability Boolean1,1,ok,sat,3.11030860900064,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_130000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_130000.smt2,Scalability Boolean1,1,ok,sat,22.17903182400005,0,False,sat,
+smc,Scalability Boolean1/constraints_15000.smt2,Scalability Boolean1,1,ok,sat,0.418877137999516,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_15000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_15000.smt2,Scalability Boolean1,1,ok,sat,5.048843590000615,0,False,sat,
+smc,Scalability Boolean1/constraints_20000.smt2,Scalability Boolean1,1,ok,sat,0.5162732310000138,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_20000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_20000.smt2,Scalability Boolean1,1,ok,sat,0.193667233999804,0,False,sat,
+smc,Scalability Boolean1/constraints_25000.smt2,Scalability Boolean1,1,ok,sat,0.5890559969993774,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_25000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_25000.smt2,Scalability Boolean1,1,ok,sat,0.20738665099997888,0,False,sat,
+smc,Scalability Boolean1/constraints_30000.smt2,Scalability Boolean1,1,ok,sat,0.7006871449993923,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_30000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_30000.smt2,Scalability Boolean1,1,ok,sat,0.2614898030005861,0,False,sat,
+smc,Scalability Boolean1/constraints_35000.smt2,Scalability Boolean1,1,ok,sat,0.7975468439999531,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_35000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_35000.smt2,Scalability Boolean1,1,ok,sat,0.26263354500042624,0,False,sat,
+smc,Scalability Boolean1/constraints_40000.smt2,Scalability Boolean1,1,ok,sat,0.8730224949995318,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_40000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_40000.smt2,Scalability Boolean1,1,ok,sat,0.31204252499992435,0,False,sat,
+smc,Scalability Boolean1/constraints_45000.smt2,Scalability Boolean1,1,ok,sat,0.912241420999635,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_45000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_45000.smt2,Scalability Boolean1,1,ok,sat,0.3783750080001482,0,False,sat,
+smc,Scalability Boolean1/constraints_5000.smt2,Scalability Boolean1,1,ok,sat,0.2543801510000776,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_5000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                 shows help message and exits
+-v --version                                                                              prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_5000.smt2,Scalability Boolean1,1,ok,sat,0.10180004199901305,0,False,sat,
+smc,Scalability Boolean1/constraints_50000.smt2,Scalability Boolean1,1,ok,sat,1.0525158020009258,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_50000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_50000.smt2,Scalability Boolean1,1,ok,sat,0.3855393929989077,0,False,sat,
+smc,Scalability Boolean1/constraints_55000.smt2,Scalability Boolean1,1,ok,sat,1.1317911839996668,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_55000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_55000.smt2,Scalability Boolean1,1,ok,sat,0.45321903900003235,0,False,sat,
+smc,Scalability Boolean1/constraints_60000.smt2,Scalability Boolean1,1,ok,sat,1.1985153080004238,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_60000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_60000.smt2,Scalability Boolean1,1,ok,sat,0.5280766329997277,0,False,sat,
+smc,Scalability Boolean1/constraints_65000.smt2,Scalability Boolean1,1,ok,sat,1.2927026289999048,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_65000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_65000.smt2,Scalability Boolean1,1,ok,sat,0.858225604000836,0,False,sat,
+smc,Scalability Boolean1/constraints_70000.smt2,Scalability Boolean1,1,ok,sat,1.450029353998616,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_70000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_70000.smt2,Scalability Boolean1,1,ok,sat,0.8601540149993525,0,False,sat,
+smc,Scalability Boolean1/constraints_75000.smt2,Scalability Boolean1,1,ok,sat,1.5449379490000865,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_75000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_75000.smt2,Scalability Boolean1,1,ok,sat,0.8045438099998137,0,False,sat,
+smc,Scalability Boolean1/constraints_80000.smt2,Scalability Boolean1,1,ok,sat,1.5552771969996684,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_80000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_80000.smt2,Scalability Boolean1,1,ok,sat,0.8404670460004127,0,False,sat,
+smc,Scalability Boolean1/constraints_85000.smt2,Scalability Boolean1,1,ok,sat,1.635652442000719,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_85000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_85000.smt2,Scalability Boolean1,1,ok,sat,0.9153185390005092,0,False,sat,
+smc,Scalability Boolean1/constraints_90000.smt2,Scalability Boolean1,1,ok,sat,1.818637092001154,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_90000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_90000.smt2,Scalability Boolean1,1,ok,sat,1.552979222000431,0,False,sat,
+smc,Scalability Boolean1/constraints_95000.smt2,Scalability Boolean1,1,ok,sat,2.0403021539987094,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean1/constraints_95000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean1/constraints_95000.smt2,Scalability Boolean1,1,ok,sat,1.4229394939993654,0,False,sat,
+smc,Scalability Boolean2/constraints_1000.smt2,Scalability Boolean2,1,ok,sat,4.060944433998884,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_1000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                 shows help message and exits
+-v --version                                                                              prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_1000.smt2,Scalability Boolean2,1,ok,sat,13.673501089999263,0,False,sat,
+smc,Scalability Boolean2/constraints_10000.smt2,Scalability Boolean2,1,ok,sat,4.112719536999066,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_10000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_10000.smt2,Scalability Boolean2,1,timeout,,300.1641932429993,,True,,
+smc,Scalability Boolean2/constraints_100000.smt2,Scalability Boolean2,1,ok,sat,6.0713016469999275,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_100000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_100000.smt2,Scalability Boolean2,1,timeout,,300.1027710540002,,True,,
+smc,Scalability Boolean2/constraints_105000.smt2,Scalability Boolean2,1,ok,sat,6.1154717249992245,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_105000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_105000.smt2,Scalability Boolean2,1,ok,sat,23.29159318100028,0,False,sat,
+smc,Scalability Boolean2/constraints_110000.smt2,Scalability Boolean2,1,ok,sat,6.144521940999766,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_110000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_110000.smt2,Scalability Boolean2,1,ok,sat,24.627200524999353,0,False,sat,
+smc,Scalability Boolean2/constraints_115000.smt2,Scalability Boolean2,1,ok,sat,6.352843426000618,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_115000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_115000.smt2,Scalability Boolean2,1,ok,sat,43.98312843399981,0,False,sat,
+smc,Scalability Boolean2/constraints_120000.smt2,Scalability Boolean2,1,ok,sat,6.45705180099867,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_120000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_120000.smt2,Scalability Boolean2,1,ok,sat,47.749209712001175,0,False,sat,
+smc,Scalability Boolean2/constraints_125000.smt2,Scalability Boolean2,1,ok,sat,7.804022690999773,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_125000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_125000.smt2,Scalability Boolean2,1,ok,sat,58.95486682000046,0,False,sat,
+smc,Scalability Boolean2/constraints_130000.smt2,Scalability Boolean2,1,ok,sat,6.968810042999394,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_130000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                   shows help message and exits
+-v --version                                                                                prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_130000.smt2,Scalability Boolean2,1,ok,sat,68.56092536100005,0,False,sat,
+smc,Scalability Boolean2/constraints_15000.smt2,Scalability Boolean2,1,ok,sat,4.300285871999222,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_15000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_15000.smt2,Scalability Boolean2,1,ok,sat,12.168681266999556,0,False,sat,
+smc,Scalability Boolean2/constraints_20000.smt2,Scalability Boolean2,1,ok,sat,4.608521741000004,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_20000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_20000.smt2,Scalability Boolean2,1,ok,sat,17.35912446200018,0,False,sat,
+smc,Scalability Boolean2/constraints_25000.smt2,Scalability Boolean2,1,ok,sat,5.048984258000928,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_25000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_25000.smt2,Scalability Boolean2,1,ok,sat,14.49684740200064,0,False,sat,
+smc,Scalability Boolean2/constraints_30000.smt2,Scalability Boolean2,1,ok,sat,5.1545384380006,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_30000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_30000.smt2,Scalability Boolean2,1,ok,sat,13.284828552999898,0,False,sat,
+smc,Scalability Boolean2/constraints_35000.smt2,Scalability Boolean2,1,ok,sat,5.048922641999525,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_35000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_35000.smt2,Scalability Boolean2,1,ok,sat,13.188196719000189,0,False,sat,
+smc,Scalability Boolean2/constraints_40000.smt2,Scalability Boolean2,1,ok,sat,5.508759413000007,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_40000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_40000.smt2,Scalability Boolean2,1,ok,sat,13.493408898999405,0,False,sat,
+smc,Scalability Boolean2/constraints_45000.smt2,Scalability Boolean2,1,ok,sat,5.3236816709995765,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_45000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_45000.smt2,Scalability Boolean2,1,ok,sat,17.35006034000071,0,False,sat,
+smc,Scalability Boolean2/constraints_5000.smt2,Scalability Boolean2,1,ok,sat,4.333901938000054,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_5000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                 shows help message and exits
+-v --version                                                                              prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_5000.smt2,Scalability Boolean2,1,ok,sat,10.789520627000456,0,False,sat,
+smc,Scalability Boolean2/constraints_50000.smt2,Scalability Boolean2,1,ok,sat,5.392424616999051,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_50000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_50000.smt2,Scalability Boolean2,1,ok,sat,13.866543061998527,0,False,sat,
+smc,Scalability Boolean2/constraints_55000.smt2,Scalability Boolean2,1,ok,sat,5.333303217999855,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_55000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_55000.smt2,Scalability Boolean2,1,ok,sat,16.63020813300136,0,False,sat,
+smc,Scalability Boolean2/constraints_60000.smt2,Scalability Boolean2,1,ok,sat,5.625099454999145,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_60000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_60000.smt2,Scalability Boolean2,1,ok,sat,15.124962705000144,0,False,sat,
+smc,Scalability Boolean2/constraints_65000.smt2,Scalability Boolean2,1,ok,sat,5.796007525999812,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_65000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_65000.smt2,Scalability Boolean2,1,ok,sat,37.90914322900062,0,False,sat,
+smc,Scalability Boolean2/constraints_70000.smt2,Scalability Boolean2,1,ok,sat,5.679203286999837,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_70000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_70000.smt2,Scalability Boolean2,1,ok,sat,25.27194368900018,0,False,sat,
+smc,Scalability Boolean2/constraints_75000.smt2,Scalability Boolean2,1,ok,sat,5.351317096999992,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_75000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_75000.smt2,Scalability Boolean2,1,ok,sat,15.09556379300011,0,False,sat,
+smc,Scalability Boolean2/constraints_80000.smt2,Scalability Boolean2,1,ok,sat,5.874351489001128,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_80000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_80000.smt2,Scalability Boolean2,1,timeout,,300.1750445310008,,True,,
+smc,Scalability Boolean2/constraints_85000.smt2,Scalability Boolean2,1,ok,sat,5.447734110000965,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_85000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_85000.smt2,Scalability Boolean2,1,ok,sat,15.990643459999774,0,False,sat,
+smc,Scalability Boolean2/constraints_90000.smt2,Scalability Boolean2,1,ok,sat,5.722735769000792,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_90000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_90000.smt2,Scalability Boolean2,1,ok,sat,16.32048266899983,0,False,sat,
+smc,Scalability Boolean2/constraints_95000.smt2,Scalability Boolean2,1,ok,sat,5.6971182730012515,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Boolean2/constraints_95000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                  shows help message and exits
+-v --version                                                                               prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Boolean2/constraints_95000.smt2,Scalability Boolean2,1,ok,sat,22.99000047300069,0,False,sat,
+smc,Scalability Real/real_vars_1000.smt2,Scalability Real,1,ok,sat,3.972207075001279,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Real/real_vars_1000.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                           shows help message and exits
+-v --version                                                                        prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Real/real_vars_1000.smt2,Scalability Real,1,ok,sat,11.242900756000381,0,False,sat,
+smc,Scalability Real/real_vars_1500.smt2,Scalability Real,1,ok,sat,8.89914388499892,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Real/real_vars_1500.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                           shows help message and exits
+-v --version                                                                        prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Real/real_vars_1500.smt2,Scalability Real,1,ok,sat,29.93935088100079,0,False,sat,
+smc,Scalability Real/real_vars_500.smt2,Scalability Real,1,ok,sat,1.1771294610007317,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability Real/real_vars_500.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                          shows help message and exits
+-v --version                                                                       prints version information and exits
+
+Input is SAT within 0 iteration(s).",
+z3,Scalability Real/real_vars_500.smt2,Scalability Real,1,ok,sat,2.0254401409983984,0,False,sat,
+smc,Scalability UNSAT/real_vars_50_uuf225-0100.smt2,Scalability UNSAT,1,ok,unsat,0.9427727900001628,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-0100.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                      shows help message and exits
+-v --version                                                                                   prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-0100.smt2,Scalability UNSAT,1,ok,unsat,0.5755026000006183,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-012.smt2,Scalability UNSAT,1,ok,unsat,0.720235265998781,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-012.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-012.smt2,Scalability UNSAT,1,ok,unsat,0.36736544799896365,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-019.smt2,Scalability UNSAT,1,ok,unsat,1.205906421999316,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-019.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-019.smt2,Scalability UNSAT,1,ok,unsat,0.6432874870006344,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-026.smt2,Scalability UNSAT,1,ok,unsat,1.0877598719998787,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-026.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-026.smt2,Scalability UNSAT,1,ok,unsat,0.49659542299923487,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-029.smt2,Scalability UNSAT,1,ok,unsat,0.4564255860004778,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-029.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-029.smt2,Scalability UNSAT,1,ok,unsat,0.2573798550001811,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-037.smt2,Scalability UNSAT,1,ok,unsat,1.0545975029999681,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-037.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-037.smt2,Scalability UNSAT,1,ok,unsat,0.4783146689987916,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-066.smt2,Scalability UNSAT,1,ok,unsat,0.8359075649987062,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-066.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-066.smt2,Scalability UNSAT,1,ok,unsat,0.5346794890010642,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-086.smt2,Scalability UNSAT,1,ok,unsat,1.2517031339993991,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-086.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-086.smt2,Scalability UNSAT,1,ok,unsat,0.6166049020011997,0,False,unsat,
+smc,Scalability UNSAT/real_vars_50_uuf225-095.smt2,Scalability UNSAT,1,ok,unsat,1.0036003690001962,0,False,"Usage: Verification [options] input 
+
+Positional arguments:
+input        /home/kevin/Github/SMC/data/SatEX/Scalability UNSAT/real_vars_50_uuf225-095.smt2 taken the vnnlib file from the path as the input file.
+
+Optional arguments:
+-h --help                                                                                     shows help message and exits
+-v --version                                                                                  prints version information and exits
+
+Input is UNSAT within 0 iteration(s).",
+z3,Scalability UNSAT/real_vars_50_uuf225-095.smt2,Scalability UNSAT,1,ok,unsat,0.5497094909987936,0,False,unsat,
