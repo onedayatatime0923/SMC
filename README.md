@@ -17,6 +17,42 @@ Install the following dependencies before building:
 - Zlib
 - Readline
 
+Set up the main external dependencies as follows.
+
+Install the C++ distribution of LibTorch from the PyTorch website, then place
+or extract it under `tool/` so this path exists:
+
+```text
+tool/libtorch
+```
+
+Install Gurobi and configure `GUROBI_HOME` for your shell. For example:
+
+```bash
+echo 'export GUROBI_HOME=/path/to/gurobi' >> ~/.bashrc
+echo 'export PATH=$GUROBI_HOME/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$GUROBI_HOME/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+echo "$GUROBI_HOME"
+```
+
+Install Z3 and configure `Z3_HOME` for your shell. For example:
+
+```bash
+echo 'export Z3_HOME=/path/to/z3' >> ~/.bashrc
+echo 'export PATH=$Z3_HOME/bin:$PATH' >> ~/.bashrc
+echo 'export LD_LIBRARY_PATH=$Z3_HOME/lib:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+echo "$Z3_HOME"
+```
+
+Install Readline through your system package manager. On Ubuntu or Debian:
+
+```bash
+sudo apt-get update
+sudo apt-get install libreadline-dev
+```
+
 The build uses the CMake finder files in `cmake/` for Gurobi and Z3. If CMake
 cannot find a dependency, set the relevant environment variables or CMake
 variables for your local installation before running `cmake`.
@@ -67,15 +103,6 @@ Run one example with SMC:
 ./bin/SMC data/test/formula_1.smt
 ```
 
-Run all examples:
-
-```bash
-for f in data/test/formula_*.smt; do
-  echo "== $f =="
-  ./bin/SMC "$f"
-done
-```
-
 You can also compare the result with Z3:
 
 ```bash
@@ -89,14 +116,6 @@ included Python experiment script:
 
 ```bash
 ./compare_satex_smc_z3.py
-```
-
-Useful options:
-
-```bash
-./compare_satex_smc_z3.py --timeout 600
-./compare_satex_smc_z3.py --repetitions 3
-./compare_satex_smc_z3.py --limit 5 --output-csv results/smoke.csv
 ```
 
 The default CSV output is:
