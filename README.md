@@ -122,6 +122,20 @@ Each row records the solver, benchmark path, run number, solver status, parsed
 `sat`/`unsat`/`unknown` result, elapsed time, return code, timeout flag, and
 captured output.
 
+To generate the runtime comparison plot from the CSV:
+
+```bash
+./plot_satex_smc_vs_z3.py
+```
+
+The default plot output is:
+
+```text
+results/satex_smc_vs_z3.png
+```
+
+![SatEX SMC vs Z3 runtime plot](results/satex_smc_vs_z3.png)
+
 ## Notes
 
 - `bin/SMC` links against Gurobi, so a missing or invalid Gurobi license can
