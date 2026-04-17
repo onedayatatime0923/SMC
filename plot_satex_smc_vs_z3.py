@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Plot SMC and Z3 runtime by SatEX formula size from the comparison CSV."""
+"""Plot SMC and Z3 runtime by SatEX test case from the comparison CSV."""
 
 from __future__ import annotations
 
@@ -7,6 +7,7 @@ import argparse
 import csv
 import os
 import re
+import statistics
 from pathlib import Path
 
 
@@ -31,7 +32,7 @@ def positive_float(text: str) -> float:
 def parse_args() -> argparse.Namespace:
     repo_root = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(
-        description="Plot SMC and Z3 runtimes by formula size from satex_smc_z3_results.csv."
+        description="Plot SMC and Z3 runtimes by SatEX test case from satex_smc_z3_results.csv."
     )
     parser.add_argument(
         "--input",
@@ -54,7 +55,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--linear",
         action="store_true",
-        help="Use linear axes instead of logarithmic axes.",
+        help="Use a linear runtime axis instead of a logarithmic runtime axis.",
+    )
+    parser.add_argument(
+        "--no-legend",
+        action="store_true",
+        help="Hide the legend.",
     )
     return parser.parse_args()
 
@@ -118,70 +124,161 @@ def runtime_points(
     return points
 
 
-def plot(points: list[dict[str, object]], output_path: Path, linear_axes: bool) -> None:
+def line_series(
+    points: list[dict[str, object]],
+) -> dict[tuple[str, str], list[tuple[int, float]]]:
+    grouped_benchmarks = {
+        group: sorted(
+            {str(point["benchmark"]) for point in points if point["group"] == group},
+            key=lambda benchmark: (
+                formula_size(benchmark) or 0,
+                benchmark,
+            ),
+        )
+        for group in {str(point["group"]) for point in points}
+    }
+    test_case_number = {
+        (group, benchmark): index
+        for group, benchmarks in grouped_benchmarks.items()
+        for index, benchmark in enumerate(benchmarks, start=1)
+    }
+
+    runtimes: dict[tuple[str, str, str], list[float]] = {}
+    for point in points:
+        key = (
+            str(point["group"]),
+            str(point["solver"]),
+            str(point["benchmark"]),
+        )
+        runtimes.setdefault(key, []).append(float(point["runtime"]))
+
+    series: dict[tuple[str, str], list[tuple[int, float]]] = {}
+    for (group, solver, benchmark), values in runtimes.items():
+        series.setdefault((group, solver), []).append(
+            (
+                test_case_number[(group, benchmark)],
+                statistics.median(values),
+            )
+        )
+
+    return {
+        key: sorted(values, key=lambda item: item[0])
+        for key, values in series.items()
+    }
+
+
+def plot(
+    points: list[dict[str, object]],
+    output_path: Path,
+    linear_axes: bool,
+    show_legend: bool,
+) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     os.environ.setdefault("MPLCONFIGDIR", "/tmp/smc-matplotlib")
     Path(os.environ["MPLCONFIGDIR"]).mkdir(parents=True, exist_ok=True)
 
     import matplotlib.pyplot as plt
 
-    groups = sorted({str(point["group"]) for point in points})
-    colormap = plt.get_cmap("tab10")
-    colors = {group: colormap(index % 10) for index, group in enumerate(groups)}
-    markers = {"SMC": "o", "Z3": "^"}
+    plt.rcParams.update(
+        {
+            "font.size": 8,
+            "axes.labelsize": 7,
+            "xtick.labelsize": 6.5,
+            "ytick.labelsize": 6.5,
+            "legend.fontsize": 5.5,
+        }
+    )
 
-    fig, ax = plt.subplots(figsize=(8, 6), constrained_layout=True)
+    groups = sorted({str(point["group"]) for point in points})
+    group_colors = {
+        "Scalability Boolean1": "#1f4de3",
+        "Scalability Boolean2": "#111111",
+        "Scalability Real": "#8a5a2b",
+        "Scalability UNSAT": "#d62728",
+    }
+    fallback_colors = plt.get_cmap("tab10")
+    colors = {
+        group: group_colors.get(group, fallback_colors(index % 10))
+        for index, group in enumerate(groups)
+    }
+    markers = {
+        "Scalability Boolean1": "o",
+        "Scalability Boolean2": "x",
+        "Scalability Real": "o",
+        "Scalability UNSAT": "s",
+    }
+    linestyles = {"SMC": "-", "Z3": "--"}
+    series = line_series(points)
+
+    fig, ax = plt.subplots(figsize=(4.2, 1.65))
+    fig.subplots_adjust(left=0.19, right=0.98, bottom=0.26, top=0.70)
     for group in groups:
         for solver in ("SMC", "Z3"):
-            solver_points = [
-                point
-                for point in points
-                if point["group"] == group and point["solver"] == solver
-            ]
-            if not solver_points:
+            values = series.get((group, solver), [])
+            if not values:
                 continue
 
-            ax.scatter(
-                [int(point["formula_size"]) for point in solver_points],
-                [float(point["runtime"]) for point in solver_points],
-                label=f"{group} - {solver}",
-                alpha=0.78,
-                s=46,
-                marker=markers[solver],
-                edgecolors="white",
-                linewidths=0.4,
+            x_values = [test_case for test_case, _runtime in values]
+            y_values = [runtime for _test_case, runtime in values]
+            ax.plot(
+                x_values,
+                y_values,
+                label=f"{group} {solver}",
                 color=colors[group],
+                linestyle=linestyles[solver],
+                marker=markers.get(group, "o"),
+                markersize=2.2,
+                markeredgewidth=0.5,
+                linewidth=0.55,
             )
 
-    all_sizes = [int(point["formula_size"]) for point in points]
-    all_runtimes = [float(point["runtime"]) for point in points]
-    min_size = min(all_sizes)
-    max_size = max(all_sizes)
+    all_x_values = [
+        test_case
+        for values in series.values()
+        for test_case, _runtime in values
+    ]
+    all_runtimes = [
+        runtime
+        for values in series.values()
+        for _test_case, runtime in values
+    ]
+    min_x = min(all_x_values)
+    max_x = max(all_x_values)
     min_runtime = min(all_runtimes)
     max_runtime = max(all_runtimes)
 
     if linear_axes:
-        size_padding = 0.05 * (max_size - min_size)
         runtime_padding = 0.05 * (max_runtime - min_runtime)
-        x_min = max(0.0, min_size - size_padding)
-        x_max = max_size + size_padding
         y_min = max(0.0, min_runtime - runtime_padding)
         y_max = max_runtime + runtime_padding
     else:
-        x_min = min_size / 1.25
-        x_max = max_size * 1.25
         y_min = min_runtime / 1.25
         y_max = max_runtime * 1.25
-        ax.set_xscale("log")
         ax.set_yscale("log")
 
-    ax.set_xlim(x_min, x_max)
+    ax.set_xlim(min_x, max_x + 0.5)
     ax.set_ylim(y_min, y_max)
-    ax.set_xlabel("Formula size")
+    tick_step = max(1, round((max_x - min_x) / 8))
+    x_ticks = list(range(min_x, max_x + 1, tick_step))
+    if x_ticks[-1] != max_x:
+        x_ticks.append(max_x)
+    ax.set_xticks(x_ticks)
+    ax.set_xlabel("Test Case Number")
     ax.set_ylabel("Runtime (seconds)")
-    ax.set_title("SatEX Runtime by Formula Size")
-    ax.grid(True, which="both", linestyle=":", linewidth=0.7, alpha=0.65)
-    ax.legend(title="Benchmark group / solver", fontsize=8)
+    ax.grid(True, which="major", linestyle="-", linewidth=0.3, alpha=0.5)
+    ax.grid(True, which="minor", axis="y", linestyle=":", linewidth=0.25, alpha=0.35)
+    for spine in ax.spines.values():
+        spine.set_linewidth(0.8)
+        spine.set_color("black")
+    ax.tick_params(width=0.7, length=3)
+    if show_legend:
+        ax.legend(
+            ncols=2,
+            loc="lower left",
+            bbox_to_anchor=(0.0, 1.02),
+            frameon=False,
+            borderaxespad=0.0,
+        )
 
     fig.savefig(output_path, dpi=300)
 
@@ -195,7 +292,7 @@ def main() -> int:
             "No SMC/Z3 benchmark rows with a parseable formula size found in the CSV."
         )
 
-    plot(points, args.output, args.linear)
+    plot(points, args.output, args.linear, not args.no_legend)
     print(f"Plotted {len(points)} SMC/Z3 runtime runs to {args.output}")
     return 0
 

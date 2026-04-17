@@ -11,7 +11,6 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-import re
 import statistics
 import subprocess
 import sys
@@ -19,9 +18,6 @@ import time
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Iterable
-
-
-RESULT_RE = re.compile(r"\b(sat|unsat|unknown)\b", re.IGNORECASE)
 
 
 @dataclass
@@ -35,8 +31,6 @@ class RunResult:
     elapsed_sec: float
     returncode: int | None
     timed_out: bool
-    stdout: str
-    stderr: str
 
 
 def default_dataset_root(repo_root: Path) -> Path:
@@ -60,23 +54,6 @@ def discover_benchmarks(dataset_root: Path) -> list[Path]:
     return benchmarks
 
 
-def trim_output(text: str, max_chars: int) -> str:
-    text = text.strip()
-    if len(text) <= max_chars:
-        return text
-    return text[:max_chars] + f"\n... <truncated to {max_chars} chars>"
-
-
-def parse_solver_result(stdout: str, stderr: str) -> str:
-    match = RESULT_RE.search(stdout)
-    if match:
-        return match.group(1).lower()
-    match = RESULT_RE.search(stderr)
-    if match:
-        return match.group(1).lower()
-    return ""
-
-
 def run_solver(
     solver_name: str,
     command: list[str],
@@ -84,30 +61,20 @@ def run_solver(
     dataset_root: Path,
     run_index: int,
     timeout_sec: float,
-    max_output_chars: int,
 ) -> RunResult:
     start = time.perf_counter()
     timed_out = False
     returncode: int | None = None
-    stdout = ""
-    stderr = ""
 
     try:
         completed = subprocess.run(
             [*command, str(benchmark)],
             check=False,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True,
             timeout=timeout_sec,
         )
         returncode = completed.returncode
-        stdout = completed.stdout
-        stderr = completed.stderr
-    except subprocess.TimeoutExpired as exc:
+    except subprocess.TimeoutExpired:
         timed_out = True
-        stdout = exc.stdout or ""
-        stderr = exc.stderr or ""
     elapsed_sec = time.perf_counter() - start
 
     if timed_out:
@@ -124,12 +91,10 @@ def run_solver(
         group=str(rel_benchmark.parent),
         run=run_index,
         status=status,
-        result=parse_solver_result(stdout, stderr),
+        result="",
         elapsed_sec=elapsed_sec,
         returncode=returncode,
         timed_out=timed_out,
-        stdout=trim_output(stdout, max_output_chars),
-        stderr=trim_output(stderr, max_output_chars),
     )
 
 
@@ -254,12 +219,6 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         help="Optional JSON output path.",
     )
     parser.add_argument(
-        "--max-output-chars",
-        type=positive_int,
-        default=4000,
-        help="Maximum captured stdout/stderr characters per row.",
-    )
-    parser.add_argument(
         "--limit",
         type=positive_int,
         default=None,
@@ -326,7 +285,6 @@ def main(argv: list[str]) -> int:
                         dataset_root=dataset_root,
                         run_index=run_index,
                         timeout_sec=args.timeout,
-                        max_output_chars=args.max_output_chars,
                     )
                 )
 
