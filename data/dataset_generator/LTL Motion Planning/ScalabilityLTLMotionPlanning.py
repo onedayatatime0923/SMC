@@ -73,6 +73,8 @@ import signal
 
 
 TIMEOUTE_LIMIT              = 600
+LTL_SMT_TEST_CASES          = [(i, 4, 4) for i in range(6, 21)]
+LTL_SMT_OUTPUT_DIR          = 'smt_formula'
 
 # Register an handler for the timeout
 def timeout_handler(signum, frame):
@@ -1562,9 +1564,278 @@ def robotic_LTL_workspace(xMaxTic, yMaxTick, zMaxTick):
     return partitions, obstaclPartitions, tag2PartitionCounterDic, wkspDimensions
 
 
+#***************************************************************************************************
+#***************************************************************************************************
+#
+#         Robotic LTL Motion Planning SMT-LIB Export
+#
+#***************************************************************************************************
+#***************************************************************************************************
+
+def _smt_real(value):
+    value = float(value)
+    if abs(value) < 1e-12:
+        value = 0.0
+    sign = value < 0
+    if sign:
+        value = -value
+    text = ('%.12f' % value).rstrip('0').rstrip('.')
+    if text == '':
+        text = '0'
+    if '.' not in text:
+        text = text + '.0'
+    if sign:
+        return '(- ' + text + ')'
+    return text
+
+
+def _smt_linear_expr(coefficients, variables):
+    terms = list()
+    for coefficient, variable in zip(coefficients, variables):
+        coefficient = float(coefficient)
+        if abs(coefficient) < 1e-12:
+            continue
+        if abs(coefficient - 1.0) < 1e-12:
+            terms.append(variable)
+        elif abs(coefficient + 1.0) < 1e-12:
+            terms.append('(- ' + variable + ')')
+        else:
+            terms.append('(* ' + _smt_real(coefficient) + ' ' + variable + ')')
+    if not terms:
+        return '0.0'
+    if len(terms) == 1:
+        return terms[0]
+    return '(+ ' + ' '.join(terms) + ')'
+
+
+def _smt_linear_constraint(coefficients, variables, rhs, sense='L'):
+    expression = _smt_linear_expr(coefficients, variables)
+    rhs = _smt_real(rhs)
+    if sense == 'E':
+        return '(= ' + expression + ' ' + rhs + ')'
+    if sense == 'G':
+        return '(>= ' + expression + ' ' + rhs + ')'
+    return '(<= ' + expression + ' ' + rhs + ')'
+
+
+def _smt_assert(line):
+    return '(assert ' + line + ')'
+
+
+def _smt_and(clauses):
+    clauses = [clause for clause in clauses if clause]
+    if not clauses:
+        return 'true'
+    if len(clauses) == 1:
+        return clauses[0]
+    return '(and ' + ' '.join(clauses) + ')'
+
+
+def _smt_or(clauses):
+    clauses = [clause for clause in clauses if clause]
+    if not clauses:
+        return 'false'
+    if len(clauses) == 1:
+        return clauses[0]
+    return '(or ' + ' '.join(clauses) + ')'
+
+
+def _add_exactly_one_boolean_constraints(lines, variables):
+    lines.append(_smt_assert(_smt_or(variables)))
+    for firstCounter in range(0, len(variables)):
+        for secondCounter in range(firstCounter + 1, len(variables)):
+            lines.append(_smt_assert('(or (not ' + variables[firstCounter] + ') (not ' + variables[secondCounter] + '))'))
+
+
+def _add_linear_constraints(lines, A, b, variables, sense='L'):
+    for rowCounter in range(0, np.shape(A)[0]):
+        lines.append(_smt_assert(_smt_linear_constraint(A[rowCounter, :], variables, b[rowCounter], sense)))
+
+
+def _ltl_motion_planning_smt_formula(xMaxTick, yMaxTick, zMaxTick):
+    partitions, obstaclPartitions, tag2PartitionCounterDic, wkspDimensions = robotic_LTL_workspace(xMaxTick, yMaxTick, zMaxTick)
+    numOfPartitions = len(partitions)
+
+    X_0 = [0.0, 0.0, 0.0]
+    Y_0 = [0.0, 0.0, 0.0]
+    Z_0 = [0.0, 0.0, 0.0]
+    P_0 = [0.0, 0.0]
+    XDot_f = [0.0, 0.0, 0.0]
+    YDot_f = [0.0, 0.0, 0.0]
+    ZDot_f = [0.0, 0.0, 0.0]
+    PDot_f = [0.0]
+    pf = 0.0
+
+    startRegion = tag2PartitionCounterDic['111']
+    endRegion = tag2PartitionCounterDic[str(xMaxTick-1) + str(yMaxTick-1) + str(zMaxTick-1)]
+    accBound = 1.0
+    smoothBound = 1.0
+    Ts = 1.0
+    horizon = xMaxTick
+    dwellTime = [1] + [1] * horizon
+    totalDwell = sum([i for i in dwellTime])
+
+    indexInputX = 0
+    indexInputY = 1
+    indexInputZ = 2
+    indexInputPsi = 3
+    indexX = 4
+    indexXDot = 5
+    indexXDDot = 6
+    indexXDDDot = 7
+    X = [indexX, indexXDot, indexXDDot, indexXDDDot]
+    indexY = 8
+    indexYDot = 9
+    indexYDDot = 10
+    indexYDDDot = 11
+    Y = [indexY, indexYDot, indexYDDot, indexYDDDot]
+    indexZ = 12
+    indexZDot = 13
+    indexZDDot = 14
+    indexZDDDot = 15
+    Z = [indexZ, indexZDot, indexZDDot, indexZDDDot]
+    indexPsi = 16
+    indexPsiDot = 17
+    Psi = [indexPsi, indexPsiDot]
+    state = range(0, 18)
+
+    numOfBooleanVars = numOfPartitions * horizon
+    numOfRealVars = len(state) * totalDwell
+    bVars = ['b_' + str(i) for i in range(0, numOfBooleanVars)]
+    rVars = ['x_' + str(i) for i in range(0, numOfRealVars)]
+
+    lines = list()
+    lines.append('; LTL motion-planning benchmark generated from ScalabilityLTLMotionPlanning.py')
+    lines.append('; test_size x=%d y=%d z=%d horizon=%d partitions=%d' % (xMaxTick, yMaxTick, zMaxTick, horizon, numOfPartitions))
+    lines.append('(set-logic QF_LRA)')
+    for bVar in bVars:
+        lines.append('(declare-fun ' + bVar + ' () Bool)')
+    for rVar in rVars:
+        lines.append('(declare-fun ' + rVar + ' () Real)')
+
+    for horizonCounter in range(0, horizon):
+        indexShift = horizonCounter * numOfPartitions
+        _add_exactly_one_boolean_constraints(lines, [bVars[i + indexShift] for i in range(0, numOfPartitions)])
+
+    for horizonCounter in range(0, horizon - 1):
+        indexShift = horizonCounter * numOfPartitions
+        indexShift_plus = (horizonCounter + 1) * numOfPartitions
+        for partitionCounter in range(0, numOfPartitions):
+            adjacent = partitions[partitionCounter]['adjacent']
+            consequent = _smt_or([bVars[i + indexShift_plus] for i in adjacent])
+            lines.append(_smt_assert('(=> ' + bVars[partitionCounter + indexShift] + ' ' + consequent + ')'))
+
+    lines.append(_smt_assert(bVars[startRegion]))
+    goalIndecies = [i * numOfPartitions + endRegion for i in range(0, horizon)]
+    lines.append(_smt_assert(_smt_or([bVars[i] for i in goalIndecies])))
+
+    badIndecies = [i * numOfPartitions + j for i in range(0, horizon - 1) for j in obstaclPartitions]
+    for badIndex in badIndecies:
+        lines.append(_smt_assert('(not ' + bVars[badIndex] + ')'))
+
+    A4_disc = np.array([
+        [1, Ts, (Ts ** 2) / 2.0, (Ts ** 3) / 6.0],
+        [0, 1, Ts, (Ts ** 2) / 2.0],
+        [0, 0, 1, Ts],
+        [0, 0, 0, 1],
+    ])
+    B4_disc = np.array([[0, 0, 0, Ts]])
+    I4 = np.array([[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, 1]])
+    A4_LP = np.concatenate((I4, -1 * A4_disc, -1 * B4_disc.T), axis=1)
+    b4_LP = [0] * 4
+
+    A2_disc = np.array([[1, Ts], [0, 1]])
+    B2_disc = np.array([[0, Ts]])
+    I2 = np.array([[1, 0], [0, 1]])
+    A2_LP = np.concatenate((I2, -1 * A2_disc, -1 * B2_disc.T), axis=1)
+    b2_LP = [0] * 2
+
+    _add_linear_constraints(lines, np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), X_0, [rVars[i] for i in [indexX, indexXDot, indexXDDot]], 'E')
+    _add_linear_constraints(lines, np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), Y_0, [rVars[i] for i in [indexY, indexYDot, indexYDDot]], 'E')
+    _add_linear_constraints(lines, np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), Z_0, [rVars[i] for i in [indexZ, indexZDot, indexZDDot]], 'E')
+    _add_linear_constraints(lines, np.array([[1, 0], [0, 1]]), P_0, [rVars[i] for i in Psi], 'E')
+
+    for horizonCounter in range(0, totalDwell - 1):
+        indexShift = horizonCounter * len(state)
+        indexShiftplus = (horizonCounter + 1) * len(state)
+
+        vars = [rVars[i + indexShiftplus] for i in X] + [rVars[i + indexShift] for i in X] + [rVars[indexInputX + indexShift]]
+        _add_linear_constraints(lines, A4_LP, b4_LP, vars, 'E')
+        vars = [rVars[i + indexShiftplus] for i in Y] + [rVars[i + indexShift] for i in Y] + [rVars[indexInputY + indexShift]]
+        _add_linear_constraints(lines, A4_LP, b4_LP, vars, 'E')
+        vars = [rVars[i + indexShiftplus] for i in Z] + [rVars[i + indexShift] for i in Z] + [rVars[indexInputZ + indexShift]]
+        _add_linear_constraints(lines, A4_LP, b4_LP, vars, 'E')
+        vars = [rVars[i + indexShiftplus] for i in Psi] + [rVars[i + indexShift] for i in Psi] + [rVars[indexInputPsi + indexShift]]
+        _add_linear_constraints(lines, A2_LP, b2_LP, vars, 'E')
+
+        lines.append(_smt_assert('(<= ' + rVars[indexXDDot + indexShift] + ' ' + _smt_real(0.5 * accBound) + ')'))
+        lines.append(_smt_assert('(>= ' + rVars[indexXDDot + indexShift] + ' ' + _smt_real(-0.5 * accBound) + ')'))
+        lines.append(_smt_assert('(<= ' + rVars[indexYDDot + indexShift] + ' ' + _smt_real(0.5 * accBound) + ')'))
+        lines.append(_smt_assert('(>= ' + rVars[indexYDDot + indexShift] + ' ' + _smt_real(-0.5 * accBound) + ')'))
+        lines.append(_smt_assert('(<= ' + rVars[indexZDDot + indexShift] + ' ' + _smt_real(0.5 * accBound) + ')'))
+        lines.append(_smt_assert('(>= ' + rVars[indexZDDot + indexShift] + ' ' + _smt_real(-0.5 * accBound) + ')'))
+
+        for jerkIndex in [indexXDDDot, indexYDDDot, indexZDDDot]:
+            vars = [rVars[jerkIndex + indexShiftplus], rVars[jerkIndex + indexShift]]
+            lines.append(_smt_assert(_smt_linear_constraint([1.0, -1.0], vars, smoothBound)))
+            lines.append(_smt_assert(_smt_linear_constraint([-1.0, 1.0], vars, smoothBound)))
+
+    indexShift = (totalDwell - 1) * len(state)
+    _add_linear_constraints(lines, np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), XDot_f, [rVars[i] for i in [indexXDot + indexShift, indexXDDot + indexShift, indexXDDDot + indexShift]], 'E')
+    _add_linear_constraints(lines, np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), YDot_f, [rVars[i] for i in [indexYDot + indexShift, indexYDDot + indexShift, indexYDDDot + indexShift]], 'E')
+    _add_linear_constraints(lines, np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]]), ZDot_f, [rVars[i] for i in [indexZDot + indexShift, indexZDDot + indexShift, indexZDDDot + indexShift]], 'E')
+    _add_linear_constraints(lines, np.array([[1]]), PDot_f, [rVars[indexPsiDot + indexShift]], 'E')
+    _add_linear_constraints(lines, np.array([[1]]), [pf], [rVars[indexPsi + indexShift]], 'E')
+
+    for horizonCounter in range(0, horizon):
+        boolIndexShift = horizonCounter * numOfPartitions
+        stateIndexShift = sum([dwellTime[i] for i in range(0, horizonCounter + 1)]) * len(state)
+        for partitionCounter in range(0, numOfPartitions):
+            vars = [rVars[i + stateIndexShift] for i in [indexX, indexY, indexZ]]
+            partition_A = partitions[partitionCounter]['A']
+            partition_b = partitions[partitionCounter]['b']
+            regionClauses = [
+                _smt_linear_constraint(partition_A[rowCounter, :], vars, partition_b[rowCounter])
+                for rowCounter in range(0, np.shape(partition_A)[0])
+            ]
+            lines.append(_smt_assert('(=> ' + bVars[partitionCounter + boolIndexShift] + ' ' + _smt_and(regionClauses) + ')'))
+
+    lines.append('(check-sat)')
+    return '\n'.join(lines) + '\n'
+
+
+def write_ltl_motion_planning_smt_formulas(output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(dir_path, LTL_SMT_OUTPUT_DIR)
+    if not os.path.isdir(output_dir):
+        os.makedirs(output_dir)
+
+    manifest = list()
+    for testCounter, testCase in enumerate(LTL_SMT_TEST_CASES, 1):
+        xMaxTick, yMaxTick, zMaxTick = testCase
+        filename = str(testCounter) + '.smt2'
+        output_path = os.path.join(output_dir, filename)
+        formula = _ltl_motion_planning_smt_formula(xMaxTick, yMaxTick, zMaxTick)
+        with open(output_path, 'w') as smtFile:
+            smtFile.write(formula)
+        manifest.append((testCounter, filename, xMaxTick, yMaxTick, zMaxTick))
+
+    manifest_path = os.path.join(output_dir, 'manifest.txt')
+    with open(manifest_path, 'w') as manifestFile:
+        manifestFile.write('test_case file x y z\n')
+        for testCounter, filename, xMaxTick, yMaxTick, zMaxTick in manifest:
+            manifestFile.write('%d %s %d %d %d\n' % (testCounter, filename, xMaxTick, yMaxTick, zMaxTick))
+    return manifest
+
+
 if __name__ == "__main__":
     np.random.seed(0)
-    #secureStateEstimation_main()
-    #scalability_main()
-    robotic_LTL_main()
-
+    if len(sys.argv) > 1 and sys.argv[1] == '--write-smt':
+        output_dir = None
+        if len(sys.argv) > 2:
+            output_dir = sys.argv[2]
+        write_ltl_motion_planning_smt_formulas(output_dir)
+    else:
+        #secureStateEstimation_main()
+        #scalability_main()
+        robotic_LTL_main()
