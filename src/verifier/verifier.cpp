@@ -143,7 +143,6 @@ int CVerifier::Verify(const string & model_path) {
             GRBLinExpr linear_term;
             for (int i = 0; i < expr.num_args(); ++i) {
                 if (ContainsArithVar(expr.arg(i))) {
-                    // assert(!linear_term_set_b);
                     linear_term = ToLinearExpr(expr.arg(i));
                     linear_term_set_b = true;
                 }
