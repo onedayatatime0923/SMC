@@ -136,14 +136,3 @@ results/satex_smc_vs_z3.png
 
 ![SatEX SMC vs Z3 runtime plot](results/satex_smc_vs_z3.png)
 
-## Notes
-
-- `bin/SMC` links against Gurobi, so a missing or invalid Gurobi license can
-  cause SMC runs to fail even when the binary exists.
-- The SatEX directory is named `data/SatEX` in this repository.
-- The example Python runner `z3_smt_runner.py` can run a single SMT-LIB file
-  through the Python Z3 API:
-
-```bash
-python3 z3_smt_runner.py data/test/formula_1.smt
-```
