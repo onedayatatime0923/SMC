@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import math
 import os
 import re
 import statistics
@@ -196,9 +197,20 @@ def plot(
     }
     linestyles = {"SMC": "-", "Z3": "--"}
     series = line_series(points)
+    legend_entry_count = sum(
+        1
+        for group in groups
+        for solver in ("SMC", "Z3")
+        if series.get((group, solver))
+    )
+    legend_columns = 2 if legend_entry_count <= 10 else 3
+    legend_rows = max(1, math.ceil(legend_entry_count / legend_columns))
+    figure_height = 1.65 + 0.18 * max(0, legend_rows - 2)
+    top_margin_inches = 0.20 + 0.13 * legend_rows
+    axes_top = max(0.42, 1.0 - top_margin_inches / figure_height)
 
-    fig, ax = plt.subplots(figsize=(4.2, 1.65))
-    fig.subplots_adjust(left=0.19, right=0.98, bottom=0.26, top=0.70)
+    fig, ax = plt.subplots(figsize=(4.8, figure_height))
+    fig.subplots_adjust(left=0.17, right=0.98, bottom=0.24, top=axes_top)
     for group in groups:
         for solver in ("SMC", "Z3"):
             values = series.get((group, solver), [])
@@ -260,14 +272,14 @@ def plot(
     ax.tick_params(width=0.7, length=3)
     if show_legend:
         ax.legend(
-            ncols=2,
+            ncols=legend_columns,
             loc="lower left",
             bbox_to_anchor=(0.0, 1.02),
             frameon=False,
             borderaxespad=0.0,
         )
 
-    fig.savefig(output_path, dpi=300)
+    fig.savefig(output_path, dpi=300, bbox_inches="tight")
 
 
 def main() -> int:

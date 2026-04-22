@@ -513,7 +513,13 @@ def scalability_Z3(numberOfBoolVars, numOfRealVars, constraints, outputIndex):
     print('--> SMT-LIB: WRITING CONSTRAINTS')
     #----------------------------------------------------------------------------
     start                               = timeit.default_timer()
-    write_mixed_linear_smt2(smtFilename, numberOfBoolVars, numOfRealVars, constraints)
+    write_mixed_linear_smt2(
+        smtFilename,
+        numberOfBoolVars,
+        numOfRealVars,
+        constraints,
+        use_scientific_notation=False,
+    )
     end                                 = timeit.default_timer()
     time_smt_SMT                        = end - start
 

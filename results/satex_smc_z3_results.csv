@@ -1,3 +1,167 @@
 solver,benchmark,group,run,status,result,elapsed_sec,returncode,timed_out
-smc,LTL Motion Planning/z3_smtlib/1.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.2652205510003114,0,False
-z3,LTL Motion Planning/z3_smtlib/1.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.06471682299979875,0,False
+smc,LTL Motion Planning/z3_smtlib/1.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.26494299100022545,0,False
+z3,LTL Motion Planning/z3_smtlib/1.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.06453185000009398,0,False
+smc,LTL Motion Planning/z3_smtlib/10.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.0169900769997184,0,False
+z3,LTL Motion Planning/z3_smtlib/10.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.3150429490001443,0,False
+smc,LTL Motion Planning/z3_smtlib/11.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.4179758279997259,0,False
+z3,LTL Motion Planning/z3_smtlib/11.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.616339139000047,0,False
+smc,LTL Motion Planning/z3_smtlib/12.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.5190525220000382,0,False
+z3,LTL Motion Planning/z3_smtlib/12.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.4148111989998142,0,False
+smc,LTL Motion Planning/z3_smtlib/13.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.9200267249998433,0,False
+z3,LTL Motion Planning/z3_smtlib/13.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.870034996999948,0,False
+smc,LTL Motion Planning/z3_smtlib/14.smt2,LTL Motion Planning/z3_smtlib,1,ok,,2.0705355000000054,0,False
+z3,LTL Motion Planning/z3_smtlib/14.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.6670405270001538,0,False
+smc,LTL Motion Planning/z3_smtlib/15.smt2,LTL Motion Planning/z3_smtlib,1,ok,,2.371634103999895,0,False
+z3,LTL Motion Planning/z3_smtlib/15.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.518639930000063,0,False
+smc,LTL Motion Planning/z3_smtlib/2.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.31589158899987524,0,False
+z3,LTL Motion Planning/z3_smtlib/2.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.06492597799979194,0,False
+smc,LTL Motion Planning/z3_smtlib/3.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.3153254700000616,0,False
+z3,LTL Motion Planning/z3_smtlib/3.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.1145861629997853,0,False
+smc,LTL Motion Planning/z3_smtlib/4.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.4151008250000814,0,False
+z3,LTL Motion Planning/z3_smtlib/4.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.11481630899970696,0,False
+smc,LTL Motion Planning/z3_smtlib/5.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.46602927900039504,0,False
+z3,LTL Motion Planning/z3_smtlib/5.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.21578131899968866,0,False
+smc,LTL Motion Planning/z3_smtlib/6.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.5163224650000302,0,False
+z3,LTL Motion Planning/z3_smtlib/6.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.16549071899999035,0,False
+smc,LTL Motion Planning/z3_smtlib/7.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.5661103980000917,0,False
+z3,LTL Motion Planning/z3_smtlib/7.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.2653935960001945,0,False
+smc,LTL Motion Planning/z3_smtlib/8.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.7665210459999798,0,False
+z3,LTL Motion Planning/z3_smtlib/8.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.2150027279999449,0,False
+smc,LTL Motion Planning/z3_smtlib/9.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.8167362029998912,0,False
+z3,LTL Motion Planning/z3_smtlib/9.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.5159707059997345,0,False
+smc,Scalability Boolean1/z3_smtlib/1.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.2646199450000495,0,False
+z3,Scalability Boolean1/z3_smtlib/1.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.11499225100033073,0,False
+smc,Scalability Boolean1/z3_smtlib/10.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.9673882629999753,0,False
+z3,Scalability Boolean1/z3_smtlib/10.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.3661907410000822,0,False
+smc,Scalability Boolean1/z3_smtlib/11.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.017774561999886,0,False
+z3,Scalability Boolean1/z3_smtlib/11.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.36533858400025565,0,False
+smc,Scalability Boolean1/z3_smtlib/12.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.1176535580002565,0,False
+z3,Scalability Boolean1/z3_smtlib/12.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.4159016859998701,0,False
+smc,Scalability Boolean1/z3_smtlib/13.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.2677501819998724,0,False
+z3,Scalability Boolean1/z3_smtlib/13.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.5162155960001655,0,False
+smc,Scalability Boolean1/z3_smtlib/14.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.2679114569996273,0,False
+z3,Scalability Boolean1/z3_smtlib/14.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.6164342389997728,0,False
+smc,Scalability Boolean1/z3_smtlib/15.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.3181004839998423,0,False
+z3,Scalability Boolean1/z3_smtlib/15.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.5155160760000399,0,False
+smc,Scalability Boolean1/z3_smtlib/16.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.4685206180001842,0,False
+z3,Scalability Boolean1/z3_smtlib/16.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.615814612000122,0,False
+smc,Scalability Boolean1/z3_smtlib/17.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.5695542100002058,0,False
+z3,Scalability Boolean1/z3_smtlib/17.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.6660535410001103,0,False
+smc,Scalability Boolean1/z3_smtlib/18.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.5698883009999918,0,False
+z3,Scalability Boolean1/z3_smtlib/18.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.0673372530000051,0,False
+smc,Scalability Boolean1/z3_smtlib/19.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.7710739260000992,0,False
+z3,Scalability Boolean1/z3_smtlib/19.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.2694502389999798,0,False
+smc,Scalability Boolean1/z3_smtlib/2.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.26569998000013584,0,False
+z3,Scalability Boolean1/z3_smtlib/2.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.11491106399989803,0,False
+smc,Scalability Boolean1/z3_smtlib/20.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.7704839029997856,0,False
+z3,Scalability Boolean1/z3_smtlib/20.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.4691690889999336,0,False
+smc,Scalability Boolean1/z3_smtlib/21.smt2,Scalability Boolean1/z3_smtlib,1,ok,,1.87057490899997,0,False
+z3,Scalability Boolean1/z3_smtlib/21.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.472790396000164,0,False
+smc,Scalability Boolean1/z3_smtlib/22.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.120039542000086,0,False
+z3,Scalability Boolean1/z3_smtlib/22.smt2,Scalability Boolean1/z3_smtlib,1,ok,,3.625365439000234,0,False
+smc,Scalability Boolean1/z3_smtlib/23.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.121150872999806,0,False
+z3,Scalability Boolean1/z3_smtlib/23.smt2,Scalability Boolean1/z3_smtlib,1,ok,,4.628294598999673,0,False
+smc,Scalability Boolean1/z3_smtlib/24.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.2702033479999955,0,False
+z3,Scalability Boolean1/z3_smtlib/24.smt2,Scalability Boolean1/z3_smtlib,1,ok,,8.941219520999766,0,False
+smc,Scalability Boolean1/z3_smtlib/25.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.521874273999856,0,False
+z3,Scalability Boolean1/z3_smtlib/25.smt2,Scalability Boolean1/z3_smtlib,1,ok,,12.501111213000058,0,False
+smc,Scalability Boolean1/z3_smtlib/26.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.472233962000246,0,False
+z3,Scalability Boolean1/z3_smtlib/26.smt2,Scalability Boolean1/z3_smtlib,1,ok,,12.653351076000035,0,False
+smc,Scalability Boolean1/z3_smtlib/27.smt2,Scalability Boolean1/z3_smtlib,1,ok,,2.469916917000319,0,False
+z3,Scalability Boolean1/z3_smtlib/27.smt2,Scalability Boolean1/z3_smtlib,1,ok,,14.407467265999912,0,False
+smc,Scalability Boolean1/z3_smtlib/3.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.36524869499999113,0,False
+z3,Scalability Boolean1/z3_smtlib/3.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.11494317999995474,0,False
+smc,Scalability Boolean1/z3_smtlib/4.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.4152283790003821,0,False
+z3,Scalability Boolean1/z3_smtlib/4.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.1142585309999049,0,False
+smc,Scalability Boolean1/z3_smtlib/5.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.5158128990001387,0,False
+z3,Scalability Boolean1/z3_smtlib/5.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.16496634199984328,0,False
+smc,Scalability Boolean1/z3_smtlib/6.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.5663353709996954,0,False
+z3,Scalability Boolean1/z3_smtlib/6.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.21471237700006895,0,False
+smc,Scalability Boolean1/z3_smtlib/7.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.66621167600033,0,False
+z3,Scalability Boolean1/z3_smtlib/7.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.21504221099985443,0,False
+smc,Scalability Boolean1/z3_smtlib/8.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.7665630009996676,0,False
+z3,Scalability Boolean1/z3_smtlib/8.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.2660518399998182,0,False
+smc,Scalability Boolean1/z3_smtlib/9.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.867325678999805,0,False
+z3,Scalability Boolean1/z3_smtlib/9.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.2644001470002877,0,False
+smc,Scalability Boolean2/z3_smtlib/1.smt2,Scalability Boolean2/z3_smtlib,1,ok,,3.2741553719997682,0,False
+z3,Scalability Boolean2/z3_smtlib/1.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.880645309000101,0,False
+smc,Scalability Boolean2/z3_smtlib/10.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.126197036999656,0,False
+z3,Scalability Boolean2/z3_smtlib/10.smt2,Scalability Boolean2/z3_smtlib,1,ok,,7.537741075000213,0,False
+smc,Scalability Boolean2/z3_smtlib/11.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.126992438999878,0,False
+z3,Scalability Boolean2/z3_smtlib/11.smt2,Scalability Boolean2/z3_smtlib,1,ok,,9.994583694000085,0,False
+smc,Scalability Boolean2/z3_smtlib/12.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.327225300999999,0,False
+z3,Scalability Boolean2/z3_smtlib/12.smt2,Scalability Boolean2/z3_smtlib,1,ok,,10.247124408999753,0,False
+smc,Scalability Boolean2/z3_smtlib/13.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.330164858999979,0,False
+z3,Scalability Boolean2/z3_smtlib/13.smt2,Scalability Boolean2/z3_smtlib,1,ok,,8.041254775999732,0,False
+smc,Scalability Boolean2/z3_smtlib/14.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.528199612999742,0,False
+z3,Scalability Boolean2/z3_smtlib/14.smt2,Scalability Boolean2/z3_smtlib,1,ok,,186.77607086499984,0,False
+smc,Scalability Boolean2/z3_smtlib/15.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.825880618000156,0,False
+z3,Scalability Boolean2/z3_smtlib/15.smt2,Scalability Boolean2/z3_smtlib,1,timeout,,300.04575473999967,,True
+smc,Scalability Boolean2/z3_smtlib/16.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.877958948999549,0,False
+z3,Scalability Boolean2/z3_smtlib/16.smt2,Scalability Boolean2/z3_smtlib,1,ok,,15.006477433000327,0,False
+smc,Scalability Boolean2/z3_smtlib/17.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.977198046000012,0,False
+z3,Scalability Boolean2/z3_smtlib/17.smt2,Scalability Boolean2/z3_smtlib,1,ok,,17.210397060000105,0,False
+smc,Scalability Boolean2/z3_smtlib/18.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.178277851000075,0,False
+z3,Scalability Boolean2/z3_smtlib/18.smt2,Scalability Boolean2/z3_smtlib,1,timeout,,300.04864411599965,,True
+smc,Scalability Boolean2/z3_smtlib/19.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.327800587999263,0,False
+z3,Scalability Boolean2/z3_smtlib/19.smt2,Scalability Boolean2/z3_smtlib,1,ok,,14.104611759000363,0,False
+smc,Scalability Boolean2/z3_smtlib/2.smt2,Scalability Boolean2/z3_smtlib,1,ok,,3.5736653060002936,0,False
+z3,Scalability Boolean2/z3_smtlib/2.smt2,Scalability Boolean2/z3_smtlib,1,ok,,6.6332652329992925,0,False
+smc,Scalability Boolean2/z3_smtlib/20.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.228897556999982,0,False
+z3,Scalability Boolean2/z3_smtlib/20.smt2,Scalability Boolean2/z3_smtlib,1,ok,,14.656185411000479,0,False
+smc,Scalability Boolean2/z3_smtlib/21.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.58017467100035,0,False
+z3,Scalability Boolean2/z3_smtlib/21.smt2,Scalability Boolean2/z3_smtlib,1,ok,,15.449978180000471,0,False
+smc,Scalability Boolean2/z3_smtlib/22.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.778314043000137,0,False
+z3,Scalability Boolean2/z3_smtlib/22.smt2,Scalability Boolean2/z3_smtlib,1,ok,,55.20646187999955,0,False
+smc,Scalability Boolean2/z3_smtlib/23.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.678352617999735,0,False
+z3,Scalability Boolean2/z3_smtlib/23.smt2,Scalability Boolean2/z3_smtlib,1,ok,,32.809689023999454,0,False
+smc,Scalability Boolean2/z3_smtlib/24.smt2,Scalability Boolean2/z3_smtlib,1,ok,,6.0775190909998855,0,False
+z3,Scalability Boolean2/z3_smtlib/24.smt2,Scalability Boolean2/z3_smtlib,1,ok,,30.388177992999772,0,False
+smc,Scalability Boolean2/z3_smtlib/25.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.880653657000039,0,False
+z3,Scalability Boolean2/z3_smtlib/25.smt2,Scalability Boolean2/z3_smtlib,1,ok,,61.385861153000405,0,False
+smc,Scalability Boolean2/z3_smtlib/26.smt2,Scalability Boolean2/z3_smtlib,1,ok,,6.081518564999897,0,False
+z3,Scalability Boolean2/z3_smtlib/26.smt2,Scalability Boolean2/z3_smtlib,1,ok,,58.80105728499984,0,False
+smc,Scalability Boolean2/z3_smtlib/27.smt2,Scalability Boolean2/z3_smtlib,1,ok,,5.880938211999819,0,False
+z3,Scalability Boolean2/z3_smtlib/27.smt2,Scalability Boolean2/z3_smtlib,1,ok,,76.28664876599942,0,False
+smc,Scalability Boolean2/z3_smtlib/3.smt2,Scalability Boolean2/z3_smtlib,1,ok,,3.6250783890000093,0,False
+z3,Scalability Boolean2/z3_smtlib/3.smt2,Scalability Boolean2/z3_smtlib,1,ok,,6.682856588000504,0,False
+smc,Scalability Boolean2/z3_smtlib/4.smt2,Scalability Boolean2/z3_smtlib,1,ok,,3.8240913360004924,0,False
+z3,Scalability Boolean2/z3_smtlib/4.smt2,Scalability Boolean2/z3_smtlib,1,ok,,7.735273117000361,0,False
+smc,Scalability Boolean2/z3_smtlib/5.smt2,Scalability Boolean2/z3_smtlib,1,ok,,3.925135990999479,0,False
+z3,Scalability Boolean2/z3_smtlib/5.smt2,Scalability Boolean2/z3_smtlib,1,ok,,7.9891456219993415,0,False
+smc,Scalability Boolean2/z3_smtlib/6.smt2,Scalability Boolean2/z3_smtlib,1,ok,,3.92359358900012,0,False
+z3,Scalability Boolean2/z3_smtlib/6.smt2,Scalability Boolean2/z3_smtlib,1,ok,,8.087770324000303,0,False
+smc,Scalability Boolean2/z3_smtlib/7.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.025683015999675,0,False
+z3,Scalability Boolean2/z3_smtlib/7.smt2,Scalability Boolean2/z3_smtlib,1,ok,,11.743957137000507,0,False
+smc,Scalability Boolean2/z3_smtlib/8.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.076441997999609,0,False
+z3,Scalability Boolean2/z3_smtlib/8.smt2,Scalability Boolean2/z3_smtlib,1,ok,,9.794953745000385,0,False
+smc,Scalability Boolean2/z3_smtlib/9.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.32575376099976,0,False
+z3,Scalability Boolean2/z3_smtlib/9.smt2,Scalability Boolean2/z3_smtlib,1,ok,,7.9881048669994925,0,False
+smc,Scalability Real/z3_smtlib/1.smt2,Scalability Real/z3_smtlib,1,error,,1.8208867359999203,-6,False
+z3,Scalability Real/z3_smtlib/1.smt2,Scalability Real/z3_smtlib,1,error,,1.4185416559994337,1,False
+smc,Scalability Real/z3_smtlib/2.smt2,Scalability Real/z3_smtlib,1,error,,3.5235962999995536,-6,False
+z3,Scalability Real/z3_smtlib/2.smt2,Scalability Real/z3_smtlib,1,error,,7.183340671999758,1,False
+smc,Scalability Real/z3_smtlib/3.smt2,Scalability Real/z3_smtlib,1,error,,6.330784065000444,-6,False
+z3,Scalability Real/z3_smtlib/3.smt2,Scalability Real/z3_smtlib,1,error,,14.800904443000036,1,False
+smc,Scalability Real/z3_smtlib/4.smt2,Scalability Real/z3_smtlib,1,error,,11.093932095000127,-6,False
+z3,Scalability Real/z3_smtlib/4.smt2,Scalability Real/z3_smtlib,1,error,,29.046593195999776,1,False
+smc,Scalability Real/z3_smtlib/5.smt2,Scalability Real/z3_smtlib,1,error,,14.758522137,-6,False
+z3,Scalability Real/z3_smtlib/5.smt2,Scalability Real/z3_smtlib,1,error,,135.59561290500005,1,False
+smc,Scalability UNSAT/z3_smtlib/1.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.2242231769996579,0,False
+z3,Scalability UNSAT/z3_smtlib/1.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6191843280003013,0,False
+smc,Scalability UNSAT/z3_smtlib/2.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.966230644999996,0,False
+z3,Scalability UNSAT/z3_smtlib/2.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.5157317780003723,0,False
+smc,Scalability UNSAT/z3_smtlib/3.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.317213291000371,0,False
+z3,Scalability UNSAT/z3_smtlib/3.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6156660499991631,0,False
+smc,Scalability UNSAT/z3_smtlib/4.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.5656645519993617,0,False
+z3,Scalability UNSAT/z3_smtlib/4.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.31512156299959315,0,False
+smc,Scalability UNSAT/z3_smtlib/5.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.7154782309999064,0,False
+z3,Scalability UNSAT/z3_smtlib/5.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.36508869099998265,0,False
+smc,Scalability UNSAT/z3_smtlib/6.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.1665287969999554,0,False
+z3,Scalability UNSAT/z3_smtlib/6.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6156778360000317,0,False
+smc,Scalability UNSAT/z3_smtlib/7.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.8666913889992429,0,False
+z3,Scalability UNSAT/z3_smtlib/7.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6156980129999283,0,False
+smc,Scalability UNSAT/z3_smtlib/8.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.3667442559999472,0,False
+z3,Scalability UNSAT/z3_smtlib/8.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.5655572979994758,0,False
+smc,Scalability UNSAT/z3_smtlib/9.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.9659921069996926,0,False
+z3,Scalability UNSAT/z3_smtlib/9.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.4649544160001824,0,False
