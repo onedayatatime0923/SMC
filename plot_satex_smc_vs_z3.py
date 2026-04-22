@@ -76,17 +76,20 @@ def read_rows(path: Path) -> list[dict[str, str]]:
     return rows
 
 
-def formula_size(benchmark: str) -> int | None:
+def test_case_number(benchmark: str) -> int | None:
     stem = Path(benchmark).stem
-    match = re.search(r"(?:constraints|real_vars|sensors)_(\d+)", stem)
-    if match:
-        return int(match.group(1))
-
-    match = re.search(r"(\d+)", stem)
+    match = re.fullmatch(r"(?:test[_-]?case[_-]?)?(\d+)", stem, re.IGNORECASE)
     if match:
         return int(match.group(1))
 
     return None
+
+
+def normalize_group(group: str, benchmark: str) -> str:
+    parts = Path(group.strip()).parts if group.strip() else Path(benchmark).parts[:-1]
+    if parts and parts[-1] == "z3_smtlib":
+        parts = parts[:-1]
+    return str(Path(*parts)) if parts else "unknown"
 
 
 def runtime_points(
@@ -98,8 +101,8 @@ def runtime_points(
         if solver not in {"smc", "z3"}:
             continue
 
-        size = formula_size(row["benchmark"])
-        if size is None or size <= 0:
+        test_case = test_case_number(row["benchmark"])
+        if test_case is None or test_case <= 0:
             continue
 
         runtime = (
@@ -114,9 +117,9 @@ def runtime_points(
             {
                 "benchmark": row["benchmark"],
                 "run": row["run"],
-                "group": row.get("group") or "unknown",
+                "group": normalize_group(row.get("group", ""), row["benchmark"]),
                 "solver": solver.upper() if solver == "z3" else "SMC",
-                "formula_size": size,
+                "test_case_number": test_case,
                 "runtime": runtime,
                 "status": row["status"],
             }
@@ -127,36 +130,20 @@ def runtime_points(
 def line_series(
     points: list[dict[str, object]],
 ) -> dict[tuple[str, str], list[tuple[int, float]]]:
-    grouped_benchmarks = {
-        group: sorted(
-            {str(point["benchmark"]) for point in points if point["group"] == group},
-            key=lambda benchmark: (
-                formula_size(benchmark) or 0,
-                benchmark,
-            ),
-        )
-        for group in {str(point["group"]) for point in points}
-    }
-    test_case_number = {
-        (group, benchmark): index
-        for group, benchmarks in grouped_benchmarks.items()
-        for index, benchmark in enumerate(benchmarks, start=1)
-    }
-
-    runtimes: dict[tuple[str, str, str], list[float]] = {}
+    runtimes: dict[tuple[str, str, int], list[float]] = {}
     for point in points:
         key = (
             str(point["group"]),
             str(point["solver"]),
-            str(point["benchmark"]),
+            int(point["test_case_number"]),
         )
         runtimes.setdefault(key, []).append(float(point["runtime"]))
 
     series: dict[tuple[str, str], list[tuple[int, float]]] = {}
-    for (group, solver, benchmark), values in runtimes.items():
+    for (group, solver, test_case), values in runtimes.items():
         series.setdefault((group, solver), []).append(
             (
-                test_case_number[(group, benchmark)],
+                test_case,
                 statistics.median(values),
             )
         )
@@ -289,7 +276,7 @@ def main() -> int:
     points = runtime_points(rows, args.timeout_sec)
     if not points:
         raise ValueError(
-            "No SMC/Z3 benchmark rows with a parseable formula size found in the CSV."
+            "No SMC/Z3 benchmark rows with a parseable test case number found in the CSV."
         )
 
     plot(points, args.output, args.linear, not args.no_legend)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compare bin/SMC and Z3 on all SatEX SMT-LIB benchmarks.
+"""Compare bin/SMC and Z3 on SatEX Z3 SMT-LIB benchmarks.
 
 The script records one row per solver/file/run. It intentionally treats
 timeouts and non-zero exits as data so one failing benchmark does not stop the
@@ -48,9 +48,14 @@ def default_smc_binary(repo_root: Path) -> Path:
 
 
 def discover_benchmarks(dataset_root: Path) -> list[Path]:
-    benchmarks = sorted(dataset_root.rglob("*.smt2"), key=lambda path: str(path))
+    benchmarks = sorted(
+        dataset_root.glob("*/z3_smtlib/*.smt2"),
+        key=lambda path: str(path),
+    )
     if not benchmarks:
-        raise FileNotFoundError(f"No .smt2 files found under {dataset_root}")
+        raise FileNotFoundError(
+            f"No .smt2 files found under {dataset_root}/*/z3_smtlib"
+        )
     return benchmarks
 
 
@@ -175,13 +180,16 @@ def positive_float(value: str) -> float:
 def parse_args(argv: list[str]) -> argparse.Namespace:
     repo_root = Path(__file__).resolve().parent
     parser = argparse.ArgumentParser(
-        description="Compare bin/SMC and Z3 on every .smt2 file under data/SatEX."
+        description=(
+            "Compare bin/SMC and Z3 on .smt2 files under "
+            "data/SatEX/*/z3_smtlib."
+        )
     )
     parser.add_argument(
         "--dataset-root",
         type=Path,
         default=default_dataset_root(repo_root),
-        help="Directory containing SatEX .smt2 benchmarks.",
+        help="SatEX root containing */z3_smtlib/*.smt2 benchmark files.",
     )
     parser.add_argument(
         "--smc",
