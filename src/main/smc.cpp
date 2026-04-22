@@ -28,7 +28,7 @@ int main(int argc, char **argv){
         .Nargs(1);
 
     if (program.ParseArgs(argc, argv)) return 0;
-    printf("%s\n", program.str().c_str());
+    // printf("%s\n", program.str().c_str());
 
     CSolver solver;
 
