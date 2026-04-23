@@ -1,4 +1,34 @@
 solver,benchmark,group,run,status,result,elapsed_sec,returncode,timed_out
+smc,LTL Motion Planning/z3_smtlib/1.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.26494299100022545,0,False
+z3,LTL Motion Planning/z3_smtlib/1.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.06453185000009398,0,False
+smc,LTL Motion Planning/z3_smtlib/10.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.0169900769997184,0,False
+z3,LTL Motion Planning/z3_smtlib/10.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.3150429490001443,0,False
+smc,LTL Motion Planning/z3_smtlib/11.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.4179758279997259,0,False
+z3,LTL Motion Planning/z3_smtlib/11.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.616339139000047,0,False
+smc,LTL Motion Planning/z3_smtlib/12.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.5190525220000382,0,False
+z3,LTL Motion Planning/z3_smtlib/12.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.4148111989998142,0,False
+smc,LTL Motion Planning/z3_smtlib/13.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.9200267249998433,0,False
+z3,LTL Motion Planning/z3_smtlib/13.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.870034996999948,0,False
+smc,LTL Motion Planning/z3_smtlib/14.smt2,LTL Motion Planning/z3_smtlib,1,ok,,2.0705355000000054,0,False
+z3,LTL Motion Planning/z3_smtlib/14.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.6670405270001538,0,False
+smc,LTL Motion Planning/z3_smtlib/15.smt2,LTL Motion Planning/z3_smtlib,1,ok,,2.371634103999895,0,False
+z3,LTL Motion Planning/z3_smtlib/15.smt2,LTL Motion Planning/z3_smtlib,1,ok,,1.518639930000063,0,False
+smc,LTL Motion Planning/z3_smtlib/2.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.31589158899987524,0,False
+z3,LTL Motion Planning/z3_smtlib/2.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.06492597799979194,0,False
+smc,LTL Motion Planning/z3_smtlib/3.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.3153254700000616,0,False
+z3,LTL Motion Planning/z3_smtlib/3.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.1145861629997853,0,False
+smc,LTL Motion Planning/z3_smtlib/4.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.4151008250000814,0,False
+z3,LTL Motion Planning/z3_smtlib/4.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.11481630899970696,0,False
+smc,LTL Motion Planning/z3_smtlib/5.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.46602927900039504,0,False
+z3,LTL Motion Planning/z3_smtlib/5.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.21578131899968866,0,False
+smc,LTL Motion Planning/z3_smtlib/6.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.5163224650000302,0,False
+z3,LTL Motion Planning/z3_smtlib/6.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.16549071899999035,0,False
+smc,LTL Motion Planning/z3_smtlib/7.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.5661103980000917,0,False
+z3,LTL Motion Planning/z3_smtlib/7.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.2653935960001945,0,False
+smc,LTL Motion Planning/z3_smtlib/8.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.7665210459999798,0,False
+z3,LTL Motion Planning/z3_smtlib/8.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.2150027279999449,0,False
+smc,LTL Motion Planning/z3_smtlib/9.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.8167362029998912,0,False
+z3,LTL Motion Planning/z3_smtlib/9.smt2,LTL Motion Planning/z3_smtlib,1,ok,,0.5159707059997345,0,False
 smc,Scalability Boolean1/z3_smtlib/1.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.2646199450000495,0,False
 z3,Scalability Boolean1/z3_smtlib/1.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.11499225100033073,0,False
 smc,Scalability Boolean1/z3_smtlib/10.smt2,Scalability Boolean1/z3_smtlib,1,ok,,0.9673882629999753,0,False
@@ -107,6 +137,24 @@ smc,Scalability Boolean2/z3_smtlib/8.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4
 z3,Scalability Boolean2/z3_smtlib/8.smt2,Scalability Boolean2/z3_smtlib,1,ok,,9.794953745000385,0,False
 smc,Scalability Boolean2/z3_smtlib/9.smt2,Scalability Boolean2/z3_smtlib,1,ok,,4.32575376099976,0,False
 z3,Scalability Boolean2/z3_smtlib/9.smt2,Scalability Boolean2/z3_smtlib,1,ok,,7.9881048669994925,0,False
+smc,Scalability UNSAT/z3_smtlib/1.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.2242231769996579,0,False
+z3,Scalability UNSAT/z3_smtlib/1.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6191843280003013,0,False
+smc,Scalability UNSAT/z3_smtlib/2.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.966230644999996,0,False
+z3,Scalability UNSAT/z3_smtlib/2.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.5157317780003723,0,False
+smc,Scalability UNSAT/z3_smtlib/3.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.317213291000371,0,False
+z3,Scalability UNSAT/z3_smtlib/3.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6156660499991631,0,False
+smc,Scalability UNSAT/z3_smtlib/4.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.5656645519993617,0,False
+z3,Scalability UNSAT/z3_smtlib/4.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.31512156299959315,0,False
+smc,Scalability UNSAT/z3_smtlib/5.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.7154782309999064,0,False
+z3,Scalability UNSAT/z3_smtlib/5.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.36508869099998265,0,False
+smc,Scalability UNSAT/z3_smtlib/6.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.1665287969999554,0,False
+z3,Scalability UNSAT/z3_smtlib/6.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6156778360000317,0,False
+smc,Scalability UNSAT/z3_smtlib/7.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.8666913889992429,0,False
+z3,Scalability UNSAT/z3_smtlib/7.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.6156980129999283,0,False
+smc,Scalability UNSAT/z3_smtlib/8.smt2,Scalability UNSAT/z3_smtlib,1,ok,,1.3667442559999472,0,False
+z3,Scalability UNSAT/z3_smtlib/8.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.5655572979994758,0,False
+smc,Scalability UNSAT/z3_smtlib/9.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.9659921069996926,0,False
+z3,Scalability UNSAT/z3_smtlib/9.smt2,Scalability UNSAT/z3_smtlib,1,ok,,0.4649544160001824,0,False
 smc,Scalability Real/z3_smtlib/1.smt2,Scalability Real/z3_smtlib,1,ok,,1.368431717999556,0,False
 z3,Scalability Real/z3_smtlib/1.smt2,Scalability Real/z3_smtlib,1,ok,,1.368265032000636,0,False
 smc,Scalability Real/z3_smtlib/2.smt2,Scalability Real/z3_smtlib,1,ok,,3.474578317000123,0,False
